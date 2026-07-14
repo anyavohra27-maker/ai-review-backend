@@ -1,6 +1,6 @@
 # full backend
 from flask import Flask, request, jsonify
-from reviewer import review_code
+from reviewer.reviewer import review_code
 
 app = Flask(__name__)
 
@@ -16,7 +16,7 @@ def review():
 
     result = review_code(code)
 
-    return result["data"]["review"]
+    return jsonify(result) 
 
 if __name__ == "__main__":
     app.run(debug=False, port=5008)
